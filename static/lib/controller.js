@@ -10,7 +10,11 @@ function get_sex() {
 function get_value(id) {
 	var key = '#' + id;
 	var value = $(key).get(0).value;
-	return parseFloat(value);
+	value = parseFloat(value);
+	if (isNaN(value)) {
+		return 0;
+	}
+	return value;
 }
 
 function set_value(id,value) {
@@ -52,6 +56,8 @@ function caluculate_total() {
 	var wc = new WilksCalculator(sex,weight,total);
 	set_value('formula',wc.getWilksFormula().toFixed(4));
 	set_value('factor',wc.getWilksFactor().toFixed(4));
+	set_value('total',total);
+
 }
 
 function update() {
