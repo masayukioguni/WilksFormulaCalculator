@@ -1,0 +1,35 @@
+<div>
+   <div class="input">
+    <input id="male" type="radio" name="sex" checked="checked" value="0">male
+    <input id="female" type="radio" name="sex" value="1">female
+   </div>
+   <div>
+      <input class="btn" type="button" value="ー" onclick="decrement_weight('weight');">
+      <input class="input-medium search-query" type="text" name="weight" maxlength='5' id='weight' value="65.6" placeholder="input weight(kg)">
+      <input class="btn" type="button" value="＋" onclick="increment_weight('weight');">
+    </div>
+    <div>
+      <input class="btn" type="button" value="ー" onclick="decrement_element('sq')">
+      <input class="input-medium search-query" type="text" name="squat" maxlength='5'  id='sq' value="220" placeholder="input squat(kg)">
+      <input class="btn" type="button" value="＋" onclick="increment_element('sq')">
+    </div>
+    <div>
+      <input class="btn" type="button" value="ー" onclick="decrement_element('bp')">
+      <input class="input-medium search-query" type="text" name="benchpress" maxlength='5'  id='bp' value="172.5" placeholder="input benchpress(kg)">
+      <input class="btn" type="button" value="＋" onclick="increment_element('bp')">
+    </div>
+    <div>
+      <input class="btn" type="button" value="ー" onclick="decrement_element('dl')">
+      <input class="input-medium search-query" type="text" name="deadlift" maxlength='5'  id='dl' value="187.5" placeholder="input deadlift(kg)">
+      <input class="btn" type="button" value="＋" onclick="increment_element('dl')">
+    </div>
+    <div>
+      <input class="btn" type="button" value="search" onclick="caluculate_total();">
+    </div>
+    <div>
+      <span class="label notice">Formula</span><input class="input-medium search-query" type="text" id='formula' name="formula" maxlength='5'  placeholder="">
+    </div>
+    <div>  
+      <span class="label notice"> Factor </span> <input class="input-medium search-query" type="text" id='factor'  name="factor" maxlength='5'  placeholder="">
+    </div>
+</div>
