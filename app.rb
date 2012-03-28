@@ -24,9 +24,20 @@ get '/' do
   "Wilks Formula Calculator"
 end
 
-
 get '/formula' do
  @title = 'Wilks Formula Calculator'
  @project_name =  @title
- erb :index, :layout => false
+ erb :formula_form, :layout => false
+end
+
+get '/plformula' do
+ @title = 'Powerlifting Calculator'
+ @project_name =  @title
+ erb :plform, :layout => false
+end
+
+get '/calctotal' do
+ @title = 'Total Calculator'
+ @project_name =  @title
+ erb :total_form, :layout => false
 end

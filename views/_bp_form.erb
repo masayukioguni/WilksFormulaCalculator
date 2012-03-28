@@ -1,0 +1,71 @@
+<div>
+  <table>
+     <tr>
+        <div class="input">
+          <td colspan="1" align="center">
+          </td>
+          <td colspan="2" align="center">
+            <input id="male" type="radio" name="sex" checked="checked" value="0">male
+            <input id="female" type="radio" name="sex" value="1">female
+          </div>            
+        </div> 
+     </tr>
+     <tr>
+         <td align="center">
+           <span class="label notice">weight</span>
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="ー" onclick="decrement_weight('weight');">
+         <td align="center">
+           <input class="input-small search-query" type="text" name="weight" maxlength='5' id='weight' value="65.6" placeholder="input weight(kg)">
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="＋" onclick="increment_weight('weight');">
+         </td>
+     </tr>
+     <tr>
+         <td align="center">
+           <span class="label notice">squat/benchpress/deadlift</span>
+         </td>
+     </tr>
+     <tr>
+         <td align="center">
+           <input class="btn" type="button" value="ー" onclick="decrement_element('bp')">
+         <td align="center">
+           <input class="input-small search-query" type="text" name="benchpress" maxlength='5'  id='bp' value="172.5" placeholder="input benchpress(kg)">
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="＋" onclick="increment_element('bp')">
+         </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="btn" type="button" value="search" onclick="caluculate_bench();">
+          </div>
+        </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+          <span class="label notice">Formula</span>
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="input-medium search-query" type="text" id='formula' name="formula" maxlength='5'  placeholder="">
+          </div>
+        </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+          <span class="label notice">Factor</span>
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="input-medium search-query" type="text" id='factor'  name="factor" maxlength='5'  placeholder="">
+          </div>
+        </td>
+     </tr>
+  </table>
+</div>

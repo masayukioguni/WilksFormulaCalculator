@@ -1,0 +1,92 @@
+<div>
+  <table>
+     <tr>
+        <div class="input">
+          <td colspan="1" align="center">
+          </td>
+          <td colspan="2" align="center">
+            <input id="male" type="radio" name="sex" checked="checked" value="0" onclick="update();">male
+            <input id="female" type="radio" name="sex" value="1" onclick="update();" >female
+        </div>            
+     </tr>
+     <tr>
+         <td align="center">
+           <span class="label notice">weight</span>
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="ー" onclick="decrement_weight('weight');">
+         <td align="center">
+           <input class="input-small search-query" type="text" name="weight" maxlength='5' id='weight' value="" placeholder="input weight(kg)">
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="＋" onclick="increment_weight('weight');">
+         </td>
+     </tr>
+     <tr>  
+         <td align="center">
+           <span class="label notice">formula</span>
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="ー" onclick="decrement_formula('formula');">
+         <td align="center">
+           <input class="input-small search-query" type="text" name="formula" maxlength='5' id='formula' value="" placeholder="input formula(kg)">
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="＋" onclick="increment_formula('formula');">
+         </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="btn" type="button" value="search" onclick="calculate_total();">
+          </div>
+        </td>
+     </tr>
+     <tr>
+         <td colspan="1" align="center">
+           <span class="label notice">total</span>
+         </td> 
+         <td colspan="3" align="center">
+           <input class="input-medium search-query" type="text" name="total" maxlength='5'  id='total' value="">
+         </td>
+     </tr>
+     <tr>
+         <td colspan="1" align="center">
+           <span class="label notice">reslut formula</span>
+         </td> 
+         <td colspan="3" align="center">
+           <input class="input-medium search-query" type="text" name="ret_formula" maxlength='5'  id='ret_formula' value="">
+         </td>
+     </tr>     
+     <tr>  
+        <td colspan="1" align="center">
+          <span class="label notice">Factor</span>
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="input-medium search-query" type="text" id='factor'  name="factor" maxlength='5'  placeholder="">
+          </div>
+        </td>
+     </tr>
+  </table>
+</div>
+<script language="JavaScript" type="text/javascript">
+  function calculate_total() {
+    var sex = get_sex();
+    var weight = get_value('weight');
+    var formula = get_value('formula');
+    var rwc = new ReverseWilksCalculator(sex,weight,formula);
+    var total = rwc.getResult().toFixed(4)
+    set_value('total',total);
+
+    var wc = new WilksCalculator(sex,weight,total);
+    set_value('ret_formula',wc.getWilksFormula().toFixed(4));
+    set_value('factor',wc.getWilksFactor().toFixed(4));
+  }
+
+  function update() {
+    calculate_total();
+  }
+</script>

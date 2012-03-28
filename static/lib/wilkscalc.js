@@ -323,11 +323,16 @@ WilksCalculator.prototype.getWilksFactor = function(){
    return res;
 }
 
-
 WilksCalculator.prototype.getWilksFormula = function(){
    var res = 0;
    var wilksFactor = this.getWilksFactor();
    return wilksFactor * this.value;
+}
+
+WilksCalculator.prototype.setParamater = function(sex, weight, total){
+  this.sex = sex;
+  this.weight = weight;
+  this.value = total;
 }
 
 var ReverseWilksCalculator = function(sex, weight, formula) {
@@ -339,16 +344,19 @@ var ReverseWilksCalculator = function(sex, weight, formula) {
 ReverseWilksCalculator.prototype.getResult = function(){
    var needResult = 0;
    var baseResult = 2.5;
-   for (var i = 0;i < 1000;++i) {
-      var wc = new WilksCalculator( this.sex,
+   // !!!!!
+   var wc = new WilksCalculator( this.sex,
                                     this.weight,
                                     needResult);
+   for (var i = 0;i < 1000;++i) {
+      wc.setParamater(this.sex,this.weight,needResult);
       var needFomula = wc.getWilksFormula();
       if (needFomula >= this.formula) {
          return needResult;
       }
       needResult += baseResult;
    }
+   return 0;
 }
 
 

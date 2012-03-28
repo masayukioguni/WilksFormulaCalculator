@@ -46,7 +46,19 @@ function decrement_element(id) {
 	update();
 }
 
-function caluculate_total() {
+function increment_formula(id) {
+	var value = get_value(id);
+	set_value(id,(value + 1.0).toFixed(1));
+	update();
+}
+
+function decrement_formula(id) {
+	var value = get_value(id);
+	set_value(id,(value - 1.0).toFixed(1));
+	update();
+}
+
+function calculate_pl_formula() {
 	var sex = get_sex();
 	var weight = get_value('weight');
 	var sq = get_value('sq');
@@ -57,10 +69,8 @@ function caluculate_total() {
 	set_value('formula',wc.getWilksFormula().toFixed(4));
 	set_value('factor',wc.getWilksFactor().toFixed(4));
 	set_value('total',total);
-
 }
 
-function update() {
-	caluculate_total();
-}
+
+
 

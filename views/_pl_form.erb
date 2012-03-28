@@ -1,0 +1,123 @@
+<div>
+  <table>
+     <tr>
+        <div class="input">
+          <td colspan="1" align="center">
+          </td>
+          <td colspan="2" align="center">
+            <input id="male" type="radio" name="sex" checked="checked" value="0" onclick="update();">male
+            <input id="female" type="radio" name="sex" value="1" onclick="update();">female
+          </div>            
+        </div> 
+     </tr>
+     <tr>
+         <td align="center">
+          <span class="label notice">weight</span>
+         </td>
+         <td align="center">
+              <input class="btn" type="button" value="ー" onclick="decrement_weight('weight');">
+         <td align="center">
+              <input class="input-small search-query" type="text" name="weight" maxlength='5' id='weight' value="" placeholder="input weight(kg)">
+         </td>
+         <td align="center">
+              <input class="btn" type="button" value="＋" onclick="increment_weight('weight');">
+         </td>
+     </tr>
+     <tr>
+         <td align="center">
+          <span class="label notice">squat</span>
+         </td>
+         <td align="center">
+              <input class="btn" type="button" value="ー" onclick="decrement_element('sq')">
+         <td align="center">
+              <input class="input-small search-query" type="text" name="squat" maxlength='5'  id='sq' value="" placeholder="input squat(kg)">
+         </td>
+         <td align="center">
+              <input class="btn" type="button" value="＋" onclick="increment_element('sq')">
+         </td>
+     </tr>
+     <tr>
+         <td align="center">
+          <span class="label notice">benchpress</span>
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="ー" onclick="decrement_element('bp')">
+         <td align="center">
+           <input class="input-small search-query" type="text" name="benchpress" maxlength='5'  id='bp' value="" placeholder="input benchpress(kg)">
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="＋" onclick="increment_element('bp')">
+         </td>
+     </tr>
+     <tr>
+         <td align="center">
+          <span class="label notice">deadlift</span>
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="ー" onclick="decrement_element('dl')">
+         <td align="center">
+           <input class="input-small search-query" type="text" name="deadlift" maxlength='5'  id='dl' value="187.5" placeholder="input deadlift(kg)">
+         </td>
+         <td align="center">
+           <input class="btn" type="button" value="＋" onclick="increment_element('dl')">
+         </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="btn" type="button" value="search" onclick="calculate_pl_formula();">
+          </div>
+        </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+          <span class="label notice">total</span>
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="input-medium search-query" type="text" id='total' name="total" maxlength='5'  placeholder="">
+          </div>
+        </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+          <span class="label notice">Formula</span>
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="input-medium search-query" type="text" id='formula' name="formula" maxlength='5'  placeholder="">
+          </div>
+        </td>
+     </tr>
+     <tr>  
+        <td colspan="1" align="center">
+          <span class="label notice">Factor</span>
+        </td>
+        <td colspan="3" align="center">
+          <div>
+            <input class="input-medium search-query" type="text" id='factor'  name="factor" maxlength='5'  placeholder="">
+          </div>
+        </td>
+     </tr>
+  </table>
+</div>
+<script language="JavaScript" type="text/javascript">
+  function calculate_pl_formula() {
+    var sex = get_sex();
+    var weight = get_value('weight');
+    var sq = get_value('sq');
+    var bp = get_value('bp');
+    var dl = get_value('dl');
+    var total = sq + bp + dl;
+    var wc = new WilksCalculator(sex,weight,total);
+    set_value('formula',wc.getWilksFormula().toFixed(4));
+    set_value('factor',wc.getWilksFactor().toFixed(4));
+    set_value('total',total);
+  }
+
+  function update() {
+    calculate_pl_formula();
+  }
+</script>
